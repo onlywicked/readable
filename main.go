@@ -27,6 +27,7 @@ const html = `<!DOCTYPE html>
 
 func main() {
 	filePath := flag.String("file", "", "file path of the html file")
+	contentOnly := flag.Bool("nohtml", false, "no html only outputs the parsed text content")
 	flag.Parse()
 
 	if *filePath == "" {
@@ -43,6 +44,11 @@ func main() {
 	art, err := loadFile(f)
 	if err != nil {
 		log.Fatalf("unable to parse the file: %v\n", err)
+		return
+	}
+
+	if *contentOnly {
+		fmt.Println(art.TextContent)
 		return
 	}
 

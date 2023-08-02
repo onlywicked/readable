@@ -1,4 +1,4 @@
-module readable
+module github.com/onlywicked/readable
 
 go 1.20
 
